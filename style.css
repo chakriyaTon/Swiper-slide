@@ -1,0 +1,200 @@
+/* ================================================
+   HERO SLIDER — style.css
+   ================================================ */
+
+#hs4 * {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+#hs4 {
+  position: relative;
+  width: 100%;
+  height: 550px;
+  overflow: hidden;
+  background: #111;
+  font-family: Georgia, serif;
+  cursor: grab;
+}
+
+#hs4:active {
+  cursor: grabbing;
+}
+
+/* ── Slides ── */
+#hs4 .s {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 1.1s ease;
+  pointer-events: none;
+}
+
+#hs4 .s.on {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+#hs4 .s img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ── Overlay ── */
+#hs4 .ov {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.65) 0%,
+    rgba(0, 0, 0, 0.18) 55%,
+    transparent 100%
+  );
+}
+
+/* ── Text block ── */
+#hs4 .tx {
+  position: absolute;
+  bottom: 65px;
+  left: 52px;
+  max-width: 480px;
+  color: #fff;
+  z-index: 2;
+}
+
+#hs4 .tc {
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+  letter-spacing: 4px;
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  margin-bottom: 10px;
+}
+
+#hs4 .tt {
+  font-size: 44px;
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.2;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+  margin-bottom: 12px;
+}
+
+#hs4 .td {
+  font-family: Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 1.6;
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+/* Text animates in on the active slide */
+#hs4 .s.on .tc { opacity: 0.65; transform: translateY(0); transition-delay: 0.3s; }
+#hs4 .s.on .tt { opacity: 1;    transform: translateY(0); transition-delay: 0.52s; }
+#hs4 .s.on .td { opacity: 0.88; transform: translateY(0); transition-delay: 0.72s; }
+
+/* ── Arrows ── */
+#hs4 .arr {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 20;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255, 255, 255, 0.55);
+  background: rgba(0, 0, 0, 0.18);
+  color: #fff;
+  font-size: 18px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.25s;
+  line-height: 1;
+}
+
+#hs4 .arr:hover { background: rgba(0, 0, 0, 0.45); }
+#hs4 .prv { left: 18px; }
+#hs4 .nxt { right: 18px; }
+
+/* ── Dots ── */
+#hs4 .dots {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 20;
+}
+
+#hs4 .dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.38);
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: width 0.35s, background 0.35s;
+}
+
+#hs4 .dot.on {
+  width: 26px;
+  background: #fff;
+}
+
+/* ── Progress ring ── */
+#hs4 .ring {
+  position: absolute;
+  right: 20px;
+  bottom: 18px;
+  z-index: 20;
+  width: 46px;
+  height: 46px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-family: Arial, sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+#hs4 .ring svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+  fill: none;
+  stroke-width: 3;
+}
+
+#hs4 .rbg { stroke: rgba(255, 255, 255, 0.18); }
+
+#hs4 .rfg {
+  stroke: rgba(255, 255, 255, 0.9);
+  stroke-dasharray: 125.6;
+  stroke-dashoffset: 125.6;
+}
+
+#hs4 .ring span { position: relative; z-index: 1; }
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  #hs4 { height: 320px; }
+  #hs4 .tx { left: 22px; bottom: 50px; max-width: 82%; }
+  #hs4 .tt { font-size: 26px; }
+  #hs4 .td { font-size: 13px; }
+}
